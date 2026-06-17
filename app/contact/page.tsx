@@ -90,7 +90,7 @@ export default function Contact() {
                                 <div>
                                     <h4 className="font-bold text-primary-900 mb-1">Corporate Address</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Diyar Arabia National SPC, Building 410, Street 24, Ghala Industrial Area, Muscat, Sultanate of Oman.
+                                        Al Diyar Al Arabia National SPC, Building 410, Street 24, Ghala Industrial Area, Muscat, Sultanate of Oman.
                                     </p>
                                 </div>
                             </div>

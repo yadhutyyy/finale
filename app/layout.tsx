@@ -27,7 +27,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Diyar Arabia National SPC | Premium Food Commodities Trading",
+  title: "Al Diyar Al Arabia National SPC | Premium Food Commodities Trading",
   description: "A leading Omani business group specializing in premium food grains, pulses, and spices based in Muscat, Sultanate of Oman.",
 };
 

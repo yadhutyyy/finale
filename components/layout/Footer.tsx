@@ -21,12 +21,12 @@ const footerDict = {
         support: "Support / الدعم",
         contact: "Contact / تواصل معنا",
         whatsappCTA: "Chat on WhatsApp",
-        copyright: "© 2025 Diyar Arabia National SPC. All rights reserved.",
+        copyright: "© 2025 Al Diyar Al Arabia National SPC. All rights reserved.",
         privacy: "Privacy Policy",
         terms: "Terms of Use",
         sitemap: "Sitemap",
         companyNameAr: "الديار العربية الوطنية ش ش و",
-        companyName: "Diyar Arabia National SPC",
+        companyName: "Al Diyar Al Arabia National SPC",
         tagline: "Your Food Supply Partner",
         links: {
             home: "Home",
@@ -52,7 +52,7 @@ const footerDict = {
         terms: "شروط الاستخدام",
         sitemap: "خريطة الموقع",
         companyNameAr: "الديار العربية الوطنية ش ش و",
-        companyName: "Diyar Arabia National SPC",
+        companyName: "Al Diyar Al Arabia National SPC",
         tagline: "Your Food Supply Partner",
         links: {
             home: "الرئيسية",

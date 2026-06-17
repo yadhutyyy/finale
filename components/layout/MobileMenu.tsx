@@ -109,7 +109,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                         الديار العربية الوطنية ش ش و
                                     </span>
                                     <span className="font-sans font-extrabold text-[10px] tracking-tight text-brand-dark leading-none uppercase">
-                                        Diyar Arabia National SPC
+                                        Al Diyar Al Arabia National SPC
                                     </span>
                                 </div>
                             </Link>

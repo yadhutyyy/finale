@@ -43,7 +43,7 @@ const homeTranslations = {
         tagline: "Excellence in Trading Since 1998",
         heroTitle: "Oman's Trusted Partner in ",
         heroTitleHighlight: "Premium Food Commodities",
-        heroDesc: "Diyar Arabia National SPC represents uncompromised quality in the global trade of food grains, pulses, and spices. A legacy feeding the GCC with integrity and care.",
+        heroDesc: "Al Diyar Al Arabia National SPC represents uncompromised quality in the global trade of food grains, pulses, and spices. A legacy feeding the GCC with integrity and care.",
         contactBtn: "Contact Us",
         quoteBtn: "Request a Quote",
         commoditiesTitle: "Our Primary Commodities",

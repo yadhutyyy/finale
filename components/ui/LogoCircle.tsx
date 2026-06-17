@@ -24,7 +24,7 @@ export function LogoCircle({ size = "header" }: LogoCircleProps) {
         <div className={`${sizeClasses[size]} rounded-full overflow-hidden flex items-center justify-center bg-white border-2 border-brand-gold shadow-xs flex-shrink-0 hover:ring-3 hover:ring-brand-gold/30 transition-all duration-300`}>
             <Image
                 src="/assets/logo-1.png"
-                alt="Diyar Arabia National SPC"
+                alt="Al Diyar Al Arabia National SPC"
                 width={imgSize[size]}
                 height={imgSize[size]}
                 className="w-full h-full object-contain p-1"

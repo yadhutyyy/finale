@@ -31,7 +31,7 @@ const headerTranslations = {
         account: "Account",
         wishlist: "Wishlist",
         cart: "Cart",
-        companyName: "Diyar Arabia National SPC",
+        companyName: "Al Diyar Al Arabia National SPC",
         companyNameAr: "الديار العربية الوطنية ش ش و",
         tagline: "Your Food Supply Partner",
         comingSoon: "Coming soon — we're working on it!"
@@ -40,7 +40,7 @@ const headerTranslations = {
         account: "الحساب",
         wishlist: "المفضلة",
         cart: "السلة",
-        companyName: "Diyar Arabia National SPC",
+        companyName: "Al Diyar Al Arabia National SPC",
         companyNameAr: "الديار العربية الوطنية ش ش و",
         tagline: "Your Food Supply Partner",
         comingSoon: "قريباً — نحن نعمل على ذلك!"
