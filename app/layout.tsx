@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Cairo } from "next/font/google";
-import { Header } from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeContext";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { SiteProvider } from "@/context/SiteContext";
+import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -24,7 +27,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Al Diyar Al Arabia | Food Grains & Spices Trading in Oman",
+  title: "Diyar Arabia National SPC | Premium Food Commodities Trading",
   description: "A leading Omani business group specializing in premium food grains, pulses, and spices based in Muscat, Sultanate of Oman.",
 };
 
@@ -36,13 +39,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${cairo.variable}`}>
       <body className="font-sans flex flex-col min-h-screen bg-gray-50">
-        <ThemeProvider>
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+        <SiteProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <Toaster position="top-center" reverseOrder={false} />
+              <Header />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </WishlistProvider>
+          </CartProvider>
+        </SiteProvider>
       </body>
     </html>
   );

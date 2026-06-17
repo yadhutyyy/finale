@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Contact() {
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -16,6 +17,7 @@ export default function Contact() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setFormSubmitted(true);
+        toast.success("Inquiry sent successfully to Hemanth Bhaskaran!");
         // Simulate API call
         setTimeout(() => {
             setFormData({
@@ -56,7 +58,7 @@ export default function Contact() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-primary-200 text-lg max-w-2xl mx-auto leading-relaxed"
                     >
-                        Whether you are looking for bulk wholesale supply or direct imports into Oman, our experts are ready to assist.
+                        Whether you are looking for bulk wholesale supply or direct imports into Oman, our MD Hemanth Bhaskaran is ready to assist.
                     </motion.p>
                 </div>
             </section>
@@ -88,7 +90,7 @@ export default function Contact() {
                                 <div>
                                     <h4 className="font-bold text-primary-900 mb-1">Corporate Address</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Al Diyar Al Arabia, Building 410, Street 24, Ghala Industrial Area, Muscat, Sultanate of Oman.
+                                        Diyar Arabia National SPC, Building 410, Street 24, Ghala Industrial Area, Muscat, Sultanate of Oman.
                                     </p>
                                 </div>
                             </div>
@@ -99,8 +101,8 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-primary-900 mb-1">Trading & Logistics Desk</h4>
-                                    <p className="text-gray-600 text-sm mb-0.5">📞 +968 2450 1234</p>
-                                    <p className="text-gray-600 text-sm">✉️ operations@aldiyaralarabia.com</p>
+                                    <p className="text-gray-600 text-sm mb-0.5">📞 <a href="tel:+96896912000" className="hover:underline">+968 96912000</a></p>
+                                    <p className="text-gray-600 text-sm">✉️ <a href="mailto:hemanth.aldiyar@outlook.com" className="hover:underline">hemanth.aldiyar@outlook.com</a></p>
                                 </div>
                             </div>
 
@@ -141,7 +143,7 @@ export default function Contact() {
                                 </p>
                                 <button 
                                     onClick={() => setFormSubmitted(false)}
-                                    className="mt-4 px-6 py-2 bg-primary-800 text-white rounded-lg text-xs font-semibold hover:bg-primary-900 transition-colors"
+                                    className="mt-4 px-6 py-2 bg-primary-800 text-white rounded-lg text-xs font-semibold hover:bg-primary-900 transition-colors cursor-pointer"
                                 >
                                     Submit Another Inquiry
                                 </button>

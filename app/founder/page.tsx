@@ -8,7 +8,7 @@ export default function Founder() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 className="text-4xl md:text-5xl font-serif font-extrabold text-white mb-4">The Founder</h1>
                     <p className="text-primary-200 text-lg max-w-2xl mx-auto">
-                        Meet the visionary leader shaping the legacy of Al Diyar Al Arabia.
+                        Meet the visionary leader shaping the legacy of Diyar Arabia National SPC.
                     </p>
                 </div>
             </section>
@@ -27,7 +27,7 @@ export default function Founder() {
                                     Executive Leadership
                                 </div>
                                 <div className="absolute bottom-6 left-6 right-6 border-t border-primary-800/80 pt-4 text-left relative z-10">
-                                    <div className="text-xs text-primary-300 font-medium">Al Diyar Al Arabia</div>
+                                    <div className="text-xs text-primary-300 font-medium">Diyar Arabia National SPC</div>
                                     <div className="text-[10px] text-gold-500 font-semibold tracking-wider uppercase mt-0.5">Muscat, Oman</div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@ export default function Founder() {
 
                             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                                 <p>
-                                    A seasoned entrepreneur and an astoundingly meticulous strategist, Hemanth Bhaskaran established Al Diyar Al Arabia with a singular vision: to revolutionize the standard of commodities trading in the Sultanate of Oman.
+                                    A seasoned entrepreneur and an astoundingly meticulous strategist, Hemanth Bhaskaran established Diyar Arabia National SPC with a singular vision: to revolutionize the standard of commodities trading in the Sultanate of Oman.
                                 </p>
                                 <p>
                                     With over two decades of robust experience traversing international supply chains and agricultural commodity markets, his foresight and relentless pursuit of excellence have catapulted the company into a leading position. His approach emphasizes sustainable, ethical sourcing from the world&apos;s most reputable agricultural hubs, effectively securing Oman&apos;s essential food pipelines.

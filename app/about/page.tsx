@@ -8,7 +8,7 @@ export default function About() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 className="text-4xl md:text-5xl font-serif font-extrabold text-white mb-4">About Us</h1>
                     <p className="text-primary-200 text-lg max-w-2xl mx-auto">
-                        Discover the heritage, mission, and vision that drive Al Diyar Al Arabia to be Oman&apos;s premier food commodities trading partner.
+                        Discover the heritage, mission, and vision that drive Diyar Arabia National SPC to be Oman&apos;s premier food commodities trading partner.
                     </p>
                 </div>
             </section>
@@ -25,7 +25,7 @@ export default function About() {
                             <h2 className="text-3xl font-serif font-bold text-primary-900 mb-6">A Legacy of Trust in Every Grain</h2>
                             <div className="space-y-4 text-gray-600 leading-relaxed text-lg">
                                 <p>
-                                    Founded over two decades ago, Al Diyar Al Arabia has grown from a humble local enterprise into a cornerstone of Oman&apos;s agricultural and food commodities sector. Our journey is paved with unwavering dedication, family values, and a profound respect for the communities we serve.
+                                    Founded over two decades ago, Diyar Arabia National SPC has grown from a humble local enterprise into a cornerstone of Oman&apos;s agricultural and food commodities sector. Our journey is paved with unwavering dedication, family values, and a profound respect for the communities we serve.
                                 </p>
                                 <p>
                                     We recognize that the food we trade eventually reaches the dining tables of families. This immense responsibility fuels our rigorous sourcing processes and stringent quality checks, ensuring that only the finest grains, pulses, and spices cross international borders and into your homes.
@@ -82,7 +82,7 @@ export default function About() {
                             <div className="md:w-1/4 font-bold text-primary-800 text-xl pt-[-4px]">1998</div>
                             <div className="md:w-3/4 text-gray-600">
                                 <strong className="text-gray-900 block mb-1">Company Foundation</strong>
-                                The inception of Al Diyar Al Arabia as a small local trading outfit in Muscat, specializing initially in rice imports.
+                                The inception of Diyar Arabia National SPC as a small local trading outfit in Muscat, specializing initially in rice imports.
                             </div>
                         </div>
 

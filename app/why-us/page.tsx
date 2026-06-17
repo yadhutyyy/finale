@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function WhyUs() {
     const strengths = [
@@ -41,7 +44,7 @@ export default function WhyUs() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 className="text-4xl md:text-5xl font-serif font-extrabold text-white mb-4">Why Choose Us</h1>
                     <p className="text-primary-200 text-lg max-w-2xl mx-auto">
-                        The distinct differentiators that make Al Diyar Al Arabia the preferred partner for commodities trading.
+                        The distinct differentiators that make Diyar Arabia National SPC the preferred partner for commodities trading.
                     </p>
                 </div>
             </section>
@@ -99,15 +102,18 @@ export default function WhyUs() {
                 <div className="max-w-4xl mx-auto px-4 relative z-10">
                     <h2 className="text-3xl md:text-5xl font-serif font-extrabold mb-6">Ready to secure your supply chain?</h2>
                     <p className="text-xl text-primary-200 mb-10">
-                        Partner with Al Diyar Al Arabia for unmatched reliability, premium commodity quality, and service that puts your business first.
+                        Partner with Diyar Arabia National SPC for unmatched reliability, premium commodity quality, and service that puts your business first.
                     </p>
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <Link href="/contact" className="btn-primary bg-gold-600 hover:bg-gold-700 text-white text-lg px-8 py-4">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <Link href="/contact" className="btn-primary bg-gold-600 hover:bg-gold-700 text-white text-lg px-8 py-4 text-center w-full sm:w-auto">
                             Contact Our Sales Team
                         </Link>
-                        <Link href="#" className="btn-secondary bg-transparent border-white !text-white hover:bg-white/10 text-lg px-8 py-4">
+                        <button 
+                            onClick={() => toast("Coming soon — we're working on it!", { icon: "📁" })}
+                            className="btn-secondary bg-transparent border border-white !text-white hover:bg-white/10 text-lg px-8 py-4 cursor-pointer w-full sm:w-auto text-center font-bold rounded-lg"
+                        >
                             Request Full Product Catalog
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </section>
