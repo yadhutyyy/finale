@@ -22,7 +22,7 @@ export default function Home() {
             <span className="text-gold-500 font-semibold tracking-wider uppercase text-sm mb-4 block">
               Excellence in Trading Since 1998
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-serif font-extrabold tracking-tight mb-6 leading-tight">
               Oman&apos;s Trusted Partner in <span className="text-gold-400">Premium Food Commodities</span>
             </h1>
             <p className="text-lg md:text-xl text-primary-100 mb-10 max-w-2xl leading-relaxed">
@@ -41,60 +41,60 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-primary-900 mb-4">Our Primary Commodities</h2>
-            <p className="text-gray-600">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-4">Our Primary Commodities</h2>
+            <p className="text-gray-600 leading-relaxed">
               Sourcing the finest agricultural products from globally recognized producers to ensure the highest standards for the Omani market.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Service 1 */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
-              <div className="h-48 bg-primary-100 relative overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div className="h-56 bg-primary-100 relative overflow-hidden">
                 <Image src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Premium Grains" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-primary-900 mb-3">Premium Grains</h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <h3 className="text-xl font-serif font-bold text-primary-900 mb-3">Premium Grains</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
                   We supply high-grade rice, wheat, and other essential grains, meticulously sourced to meet demanding culinary standards across the region.
                 </p>
-                <Link href="/about" className="text-gold-600 font-medium hover:text-gold-700 flex items-center">
-                  Learn more <span className="ml-1">&rarr;</span>
+                <Link href="/about" className="text-gold-600 font-semibold hover:text-gold-700 inline-flex items-center group/link">
+                  Learn more <span className="ml-1 group-hover/link:translate-x-1 transition-transform duration-200">&rarr;</span>
                 </Link>
               </div>
             </div>
 
             {/* Service 2 */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
-              <div className="h-48 bg-primary-100 relative overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div className="h-56 bg-primary-100 relative overflow-hidden">
                 <Image src="https://images.unsplash.com/photo-1515543904379-3d757afe72e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Quality Pulses" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-primary-900 mb-3">Quality Pulses</h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <h3 className="text-xl font-serif font-bold text-primary-900 mb-3">Quality Pulses</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
                   A comprehensive range of lentils, chickpeas, and beans imported directly from esteemed global farming hubs ensures nutritional excellence.
                 </p>
-                <Link href="/about" className="text-gold-600 font-medium hover:text-gold-700 flex items-center">
-                  Learn more <span className="ml-1">&rarr;</span>
+                <Link href="/about" className="text-gold-600 font-semibold hover:text-gold-700 inline-flex items-center group/link">
+                  Learn more <span className="ml-1 group-hover/link:translate-x-1 transition-transform duration-200">&rarr;</span>
                 </Link>
               </div>
             </div>
 
             {/* Service 3 */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
-              <div className="h-48 bg-primary-100 relative overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xs border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div className="h-56 bg-primary-100 relative overflow-hidden">
                 <Image src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Aromatic Spices" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-primary-900 mb-3">Aromatic Spices</h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <h3 className="text-xl font-serif font-bold text-primary-900 mb-3">Aromatic Spices</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
                   Authentic, rich, and vibrant spices that form the cornerstone of Omani heritage and contemporary cuisine, carefully processed and packaged.
                 </p>
-                <Link href="/about" className="text-gold-600 font-medium hover:text-gold-700 flex items-center">
-                  Learn more <span className="ml-1">&rarr;</span>
+                <Link href="/about" className="text-gold-600 font-semibold hover:text-gold-700 inline-flex items-center group/link">
+                  Learn more <span className="ml-1 group-hover/link:translate-x-1 transition-transform duration-200">&rarr;</span>
                 </Link>
               </div>
             </div>
@@ -103,44 +103,44 @@ export default function Home() {
       </section>
 
       {/* Key Strengths Teaser */}
-      <section className="py-20 bg-primary-900 text-white">
+      <section className="py-24 bg-primary-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Built on Trust, Driven by Quality.</h2>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">Built on Trust, Driven by Quality.</h2>
               <p className="text-primary-100 text-lg mb-8 leading-relaxed">
                 As a family-owned enterprise, our reputation is our most valuable asset. We have established robust supply chains and stringent quality control protocols to ensure that every shipment reflects our commitment to excellence.
               </p>
               <ul className="space-y-4 mb-8">
                 {['Direct Sourcing from Origins', 'State-of-the-Art Storage Facilities', 'Unwavering Regulatory Compliance'].map((item, i) => (
                   <li key={i} className="flex items-center text-primary-50">
-                    <svg className="h-6 w-6 text-gold-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-6 w-6 text-gold-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/why-us" className="btn-primary bg-white text-primary-900 hover:bg-gray-100">
+              <Link href="/why-us" className="btn-primary bg-white text-primary-900 hover:bg-gray-150">
                 Discover Why Us
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-primary-800 p-8 rounded-xl text-center shadow-inner">
+              <div className="bg-primary-800 p-8 rounded-2xl text-center shadow-inner">
                 <div className="text-4xl font-extrabold text-gold-400 mb-2">25+</div>
-                <div className="text-sm text-primary-200 font-medium uppercase tracking-wide">Years Experience</div>
+                <div className="text-sm text-primary-200 font-semibold uppercase tracking-wide">Years Experience</div>
               </div>
-              <div className="bg-primary-800 p-8 rounded-xl text-center shadow-inner mt-8">
+              <div className="bg-primary-800 p-8 rounded-2xl text-center shadow-inner mt-8">
                 <div className="text-4xl font-extrabold text-gold-400 mb-2">50+</div>
-                <div className="text-sm text-primary-200 font-medium uppercase tracking-wide">Global Partners</div>
+                <div className="text-sm text-primary-200 font-semibold uppercase tracking-wide">Global Partners</div>
               </div>
-              <div className="bg-primary-800 p-8 rounded-xl text-center shadow-inner">
+              <div className="bg-primary-800 p-8 rounded-2xl text-center shadow-inner">
                 <div className="text-4xl font-extrabold text-gold-400 mb-2">10k</div>
-                <div className="text-sm text-primary-200 font-medium uppercase tracking-wide">Tons Annually</div>
+                <div className="text-sm text-primary-200 font-semibold uppercase tracking-wide">Tons Annually</div>
               </div>
-              <div className="bg-primary-800 p-8 rounded-xl text-center shadow-inner mt-8">
+              <div className="bg-primary-800 p-8 rounded-2xl text-center shadow-inner mt-8">
                 <div className="text-4xl font-extrabold text-gold-400 mb-2">100%</div>
-                <div className="text-sm text-primary-200 font-medium uppercase tracking-wide">Quality Assured</div>
+                <div className="text-sm text-primary-200 font-semibold uppercase tracking-wide">Quality Assured</div>
               </div>
             </div>
           </div>

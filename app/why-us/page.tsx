@@ -39,7 +39,7 @@ export default function WhyUs() {
             {/* Page Header */}
             <section className="bg-primary-900 py-20 text-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Why Choose Us</h1>
+                    <h1 className="text-4xl md:text-5xl font-serif font-extrabold text-white mb-4">Why Choose Us</h1>
                     <p className="text-primary-200 text-lg max-w-2xl mx-auto">
                         The distinct differentiators that make Al Diyar Al Arabia the preferred partner for commodities trading.
                     </p>
@@ -81,7 +81,7 @@ export default function WhyUs() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={strength.icon} />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold text-primary-900 mb-3">{strength.title}</h3>
+                                <h3 className="text-xl font-serif font-bold text-primary-900 mb-3">{strength.title}</h3>
                                 <p className="text-gray-600 leading-relaxed flex-grow">
                                     {strength.description}
                                 </p>
@@ -97,7 +97,7 @@ export default function WhyUs() {
                 <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-primary-500 rounded-full opacity-20 blur-3xl"></div>
 
                 <div className="max-w-4xl mx-auto px-4 relative z-10">
-                    <h2 className="text-3xl md:text-5xl font-extrabold mb-6">Ready to secure your supply chain?</h2>
+                    <h2 className="text-3xl md:text-5xl font-serif font-extrabold mb-6">Ready to secure your supply chain?</h2>
                     <p className="text-xl text-primary-200 mb-10">
                         Partner with Al Diyar Al Arabia for unmatched reliability, premium commodity quality, and service that puts your business first.
                     </p>

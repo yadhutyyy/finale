@@ -25,21 +25,40 @@
   --color-gold-900: #6e431a;
   --color-gold-950: #40220b;
 
+  /* Brand colors */
+  --color-brand-green: #5C7A3E;
+  --color-brand-gold: #E8B84B;
+  --color-brand-lightgreen: #7DAF3C;
+  --color-brand-dark: #1A1A1A;
+  --color-brand-topbar: #3D5229;
+  --color-brand-footer: #2D3D1F;
+
   --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --font-arabic: var(--font-cairo), sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-white text-gray-900 font-sans;
+    @apply bg-[#FAFAF7] text-brand-dark font-sans antialiased;
+    transition: font-family 0.2s ease-in-out;
+  }
+
+  html[lang="ar"] body {
+    font-family: var(--font-cairo), sans-serif;
+  }
+
+  html[lang="en"] body {
+    font-family: var(--font-inter), sans-serif;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-block px-6 py-3 bg-primary-800 text-white font-medium rounded-md hover:bg-primary-900 transition-colors shadow-sm;
+    @apply inline-block px-6 py-3 bg-gradient-to-r from-brand-green to-brand-topbar text-white font-medium rounded-lg hover:shadow-lg active:scale-98 transition-all duration-300 cursor-pointer;
   }
 
   .btn-secondary {
-    @apply inline-block px-6 py-3 bg-white text-primary-800 border border-primary-200 font-medium rounded-md hover:bg-primary-50 transition-colors shadow-sm;
+    @apply inline-block px-6 py-3 bg-white/80 text-brand-green border border-gray-200/80 backdrop-blur-xs font-medium rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-sm hover:shadow-md active:scale-98 cursor-pointer;
   }
 }

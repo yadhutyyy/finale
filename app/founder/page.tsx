@@ -6,7 +6,7 @@ export default function Founder() {
             {/* Page Header */}
             <section className="bg-primary-900 py-20 text-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">The Founder</h1>
+                    <h1 className="text-4xl md:text-5xl font-serif font-extrabold text-white mb-4">The Founder</h1>
                     <p className="text-primary-200 text-lg max-w-2xl mx-auto">
                         Meet the visionary leader shaping the legacy of Al Diyar Al Arabia.
                     </p>
@@ -18,14 +18,21 @@ export default function Founder() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                         <div className="lg:col-span-4">
-                            <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border-4 border-white bg-gray-100">
-                                {/* Fallback pattern to mimic a professional portrait space */}
-                                <div className="absolute inset-0 bg-gradient-to-tr from-primary-900 to-primary-800 flex items-end justify-center pb-6">
-                                    <div className="w-3/4 aspect-square bg-white/10 rounded-full blur-3xl absolute bottom-0"></div>
+                            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-primary-950 flex flex-col items-center justify-center p-6 text-center select-none">
+                                <div className="absolute inset-0 bg-gradient-to-tr from-primary-950 via-primary-900 to-primary-800"></div>
+                                <div className="relative z-10 w-24 h-24 rounded-full border-2 border-gold-400/80 bg-primary-950 flex items-center justify-center mb-4 shadow-xl">
+                                    <span className="text-3xl font-serif font-bold text-gold-400 tracking-wider">HB</span>
+                                </div>
+                                <div className="relative z-10 text-primary-200 uppercase tracking-widest text-[10px] font-semibold">
+                                    Executive Leadership
+                                </div>
+                                <div className="absolute bottom-6 left-6 right-6 border-t border-primary-800/80 pt-4 text-left relative z-10">
+                                    <div className="text-xs text-primary-300 font-medium">Al Diyar Al Arabia</div>
+                                    <div className="text-[10px] text-gold-500 font-semibold tracking-wider uppercase mt-0.5">Muscat, Oman</div>
                                 </div>
                             </div>
                             <div className="mt-6 text-center lg:text-left">
-                                <h2 className="text-3xl font-extrabold text-primary-900">Hemanth Bhaskaran</h2>
+                                <h2 className="text-3xl font-serif font-extrabold text-primary-900">Hemanth Bhaskaran</h2>
                                 <p className="text-gold-600 font-medium uppercase tracking-wider text-sm mt-1">
                                     Founder & Managing Director
                                 </p>
@@ -53,7 +60,7 @@ export default function Founder() {
                                     With over two decades of robust experience traversing international supply chains and agricultural commodity markets, his foresight and relentless pursuit of excellence have catapulted the company into a leading position. His approach emphasizes sustainable, ethical sourcing from the world&apos;s most reputable agricultural hubs, effectively securing Oman&apos;s essential food pipelines.
                                 </p>
 
-                                <h3 className="text-2xl font-bold text-primary-900 mt-10 mb-4">Vision & Leadership</h3>
+                                <h3 className="text-2xl font-serif font-bold text-primary-900 mt-10 mb-4">Vision & Leadership</h3>
                                 <p>
                                     Bhaskaran&apos;s leadership philosophy intricately weaves traditional Omani business ethics and hospitality with dynamic, global corporate governance standards. He firmly believes that an organization thrives optimally when its operations resonate with the cultural heartbeat of the community it serves.
                                 </p>

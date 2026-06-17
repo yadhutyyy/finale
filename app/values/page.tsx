@@ -37,7 +37,7 @@ export default function Values() {
             {/* Page Header */}
             <section className="bg-primary-900 py-20 text-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Core Values</h1>
+                    <h1 className="text-4xl md:text-5xl font-serif font-extrabold text-white mb-4">Core Values</h1>
                     <p className="text-primary-200 text-lg max-w-2xl mx-auto">
                         The fundamental principles that dictate our decisions, influence our culture, and maintain our reputation in the commodities trade.
                     </p>
@@ -58,7 +58,7 @@ export default function Values() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={value.icon} />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold text-primary-900 mb-3">{value.title}</h3>
+                                <h3 className="text-xl font-serif font-bold text-primary-900 mb-3">{value.title}</h3>
                                 <p className="text-gray-600 leading-relaxed">
                                     {value.description}
                                 </p>
@@ -71,7 +71,7 @@ export default function Values() {
             {/* Commitment Banner */}
             <section className="py-20 bg-primary-950 text-white border-t-4 border-gold-500">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl font-bold mb-6">A Promise Engraved in Our Process</h2>
+                    <h2 className="text-3xl font-serif font-bold mb-6">A Promise Engraved in Our Process</h2>
                     <p className="text-lg text-primary-200 leading-relaxed">
                         These values are not merely corporate rhetoric. They serve as the definitive benchmark against which every supplier is vetted, every employee is hired, and every ton of commodity is traded.
                     </p>
