@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f4f6f8;
+  --color-primary-100: #e3ebf0;
+  --color-primary-200: #c5d5e1;
+  --color-primary-300: #9bb8cc;
+  --color-primary-400: #6a94b3;
+  --color-primary-500: #47789a;
+  --color-primary-600: #355f7e;
+  --color-primary-700: #2b4d67;
+  --color-primary-800: #254157;
+  --color-primary-900: #22384a;
+  --color-primary-950: #152431;
+
+  --color-gold-50: #fdfbef;
+  --color-gold-100: #fbf5d5;
+  --color-gold-200: #f6ecaa;
+  --color-gold-300: #efdc74;
+  --color-gold-400: #e8c946;
+  --color-gold-500: #e0b224;
+  --color-gold-600: #c38d1a;
+  --color-gold-700: #9c6517;
+  --color-gold-800: #81501a;
+  --color-gold-900: #6e431a;
+  --color-gold-950: #40220b;
+
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block px-6 py-3 bg-primary-800 text-white font-medium rounded-md hover:bg-primary-900 transition-colors shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-block px-6 py-3 bg-white text-primary-800 border border-primary-200 font-medium rounded-md hover:bg-primary-50 transition-colors shadow-sm;
+  }
+}
