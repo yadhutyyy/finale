@@ -1,29 +1,35 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { User, Heart, ShoppingBag, Menu, X, Search, Globe, MessageSquare } from "lucide-react";
+import { Menu, X, Search, Globe, MessageSquare } from "lucide-react";
 import { useSiteContext, BRAND } from "@/context/SiteContext";
-import { useCart } from "@/hooks/useCart";
-import { useWishlist } from "@/hooks/useWishlist";
-import Cart from "../Cart";
-import toast from "react-hot-toast";
 
 const Logo = ({ size }: { size: "mobile" | "header" }) => (
-  <div className={`${size === "mobile" ? "w-10 h-10" : "w-12 h-12"} rounded-full overflow-hidden flex items-center justify-center bg-white border-2 border-[#E8B84B] shadow-xs flex-shrink-0 hover:ring-3 hover:ring-[#E8B84B]/30 transition-all duration-300`}>
-    <Image src="/assets/logo-1.png" alt={BRAND.nameEn} width={size === "mobile" ? 40 : 48} height={size === "mobile" ? 40 : 48} className="w-full h-full object-contain p-1" priority />
+  <div style={{
+    width: size === "mobile" ? '40px' : '56px',
+    height: size === "mobile" ? '40px' : '56px',
+    borderRadius: '50%',
+    overflow: 'hidden',
+    border: '2px solid #E8B84B',
+    backgroundColor: '#fff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0
+  }}>
+    <img src="/logo-1.png" alt="Diyar Arabia" style={{ width: '90%', height: '90%', objectFit: 'contain' }} />
   </div>
 );
 
-export function Header() {
-  const { lang, currency, setLang, setCurrency, searchQuery, setSearchQuery } = useSiteContext();
-  const { setIsCartOpen, cartCount } = useCart();
-  const { wishlistCount } = useWishlist();
+function HeaderContent() {
+  const { lang, setLang, searchQuery, setSearchQuery } = useSiteContext();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentCat = searchParams.get("category");
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (y) => setIsScrolled(y > 80));
@@ -31,14 +37,22 @@ export function Header() {
   const isAr = lang === "ar";
   const t = {
     tagline: isAr ? "شريكك في التوريد الغذائي" : "Your Food Supply Partner · Muscat, Oman",
-    search: isAr ? "ابحث عن البقوليات، التوابل..." : "Search pulses, spices, grains...",
+    search: isAr ? "ابحث عن المنتجات..." : "Search pulses, spices, grains...",
     categories: isAr
-      ? ["الكل", "بقوليات", "توابل وأعشاب", "حبوب وأرز", "مكسرات وفواكه مجففة", "زيوت وسمن", "طلبات الجملة", "عروض"]
-      : ["All Categories", "Pulses", "Spices & Herbs", "Grains & Rice", "Nuts & Dried Fruits", "Oils & Ghee", "Bulk Orders", "Offers"],
-    comingSoon: isAr ? "قريباً — نحن نعمل على ذلك!" : "Coming soon — we're working on it!"
+      ? ["الأرز والحبوب", "البقوليات", "التوابل والأعشاب", "المكسرات والفواكه المجففة", "الزيوت والسمن", "المجموعة العضوية", "طلب بالجملة"]
+      : ["Grains & Rice", "Pulses", "Spices & Herbs", "Nuts & Dried Fruits", "Oils & Ghee", "Organic Range", "Bulk Enquiry"]
   };
 
-  const cats = ["all", "pulses", "spices-herbs", "grains-rice", "nuts-dried-fruits", "oils-ghee", "bulk-orders", "offers"];
+  const cats = ["grains-rice", "pulses", "spices-herbs", "nuts-dried-fruits", "oils-ghee", "organic-range", "bulk-enquiry"];
+  const catPaths = [
+    "/?category=grains-rice",
+    "/?category=pulses",
+    "/?category=spices-herbs",
+    "/?category=nuts-dried-fruits",
+    "/?category=oils-ghee",
+    "/?category=organic-range",
+    "/contact"
+  ];
 
   return (
     <header className="w-full sticky top-0 z-50 flex flex-col bg-white">
@@ -49,10 +63,6 @@ export function Header() {
             <span className="uppercase text-[10px] tracking-wider font-sans">{t.tagline}</span>
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
               <button onClick={() => setLang(isAr ? "en" : "ar")} className="hover:text-white cursor-pointer">{isAr ? "EN" : "عربي"}</button>
-              <span className="text-white/20">|</span>
-              <select value={currency} onChange={(e) => setCurrency(e.target.value as any)} className="bg-transparent text-[#E8B84B] border-none font-bold focus:outline-none cursor-pointer">
-                {["OMR", "AED", "SAR", "USD"].map(c => <option key={c} value={c} className="text-black">{c}</option>)}
-              </select>
               <span className="text-white/20">|</span>
               <a href={BRAND.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center space-x-1"><MessageSquare className="w-3.5 h-3.5 fill-current" /></a>
             </div>
@@ -65,10 +75,25 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center gap-4">
           <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <Logo size={isScrolled ? "mobile" : "header"} />
-            <div className="flex flex-col text-left rtl:text-right">
-              <span className="font-arabic text-[13px] text-[#4A4A4A] leading-none mb-0.5">{BRAND.nameAr}</span>
-              <span className="font-sans font-bold text-[15px] text-[#1A1A1A] leading-none">{BRAND.nameEn}</span>
-              <span className="font-sans text-[11px] text-[#7A7A7A] uppercase tracking-wider mt-1 leading-none">{BRAND.tagline}</span>
+            
+            {/* Brand name lockup — DO NOT MODIFY FONT SIZES */}
+            <div className="flex flex-col leading-tight">
+              <span
+                className="font-arabic text-right"
+                style={{ fontFamily: "'Cairo', sans-serif", fontSize: '13px', color: '#4A4A4A', direction: 'rtl' }}
+              >
+                الديار العربية الوطنية ش ش و
+              </span>
+              <span
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: '20px', fontWeight: '800', color: '#1A1A1A', letterSpacing: '-0.01em', textTransform: 'uppercase' }}
+              >
+                DIYAR ARABIA NATIONAL SPC
+              </span>
+              <span
+                style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: '400', color: '#7A7A7A', letterSpacing: '0.08em', textTransform: 'uppercase' }}
+              >
+                YOUR FOOD SUPPLY PARTNER
+              </span>
             </div>
           </Link>
 
@@ -77,10 +102,19 @@ export function Header() {
             <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={t.search} className="w-full bg-gray-50 border border-gray-250/60 rounded-full py-2 pl-9 pr-4 text-xs focus:ring-2 focus:ring-[#E8B84B] focus:border-transparent focus:outline-none" />
           </div>
 
-          <div className="flex items-center space-x-5 rtl:space-x-reverse">
-            <button onClick={() => toast(t.comingSoon, { icon: "👤" })} className="flex flex-col items-center text-gray-500 hover:text-brand-green cursor-pointer"><User className="w-5 h-5" /><span className="text-[9px] font-bold mt-1 uppercase tracking-wider">{isAr ? "الحساب" : "Account"}</span></button>
-            <Link href="/wishlist" className="flex flex-col items-center text-gray-500 hover:text-brand-green relative"><Heart className="w-5 h-5" />{wishlistCount > 0 && <span className="absolute -top-1 -right-1 bg-[#E8B84B] text-brand-dark font-bold text-[8px] w-4 h-4 rounded-full flex items-center justify-center border border-white">{wishlistCount}</span>}<span className="text-[9px] font-bold mt-1 uppercase tracking-wider">{isAr ? "المفضلة" : "Wishlist"}</span></Link>
-            <button onClick={() => setIsCartOpen(true)} className="flex flex-col items-center text-gray-500 hover:text-brand-green relative cursor-pointer"><ShoppingBag className="w-5 h-5" />{cartCount > 0 && <span className="absolute -top-1 -right-1 bg-[#E8B84B] text-brand-dark font-bold text-[8px] w-4 h-4 rounded-full flex items-center justify-center border border-white">{cartCount}</span>}<span className="text-[9px] font-bold mt-1 uppercase tracking-wider">{isAr ? "السلة" : "Cart"}</span></button>
+          <div className="flex items-center space-x-4 rtl:space-x-reverse">
+            {/* Enquire Now WhatsApp Button */}
+            <a
+              href="https://wa.me/96896912000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#1ebe57] transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+              </svg>
+              Enquire Now
+            </a>
             <button onClick={() => setIsMobileOpen(true)} className="md:hidden text-gray-500 hover:text-brand-green cursor-pointer"><Menu className="w-6 h-6" /></button>
           </div>
         </div>
@@ -90,16 +124,16 @@ export function Header() {
       <div className="bg-[#F4F7F0] h-11 border-b border-gray-150/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center overflow-x-auto whitespace-nowrap scrollbar-none space-x-6 rtl:space-x-reverse">
           {t.categories.map((c, i) => {
-            const path = cats[i] === "all" ? "/" : `/categories/${cats[i]}`;
-            const active = pathname === path;
+            const path = catPaths[i];
+            const active = path.startsWith("/contact")
+              ? pathname === "/contact"
+              : pathname === "/" && currentCat === cats[i];
             return (
               <Link key={c} href={path} className={`text-xs font-semibold h-full flex items-center px-1 border-b-2 transition-all duration-150 ${active ? "border-[#E8B84B] text-[#5C7A3E]" : "border-transparent text-gray-600 hover:text-[#5C7A3E]"}`}>{c}</Link>
             );
           })}
         </div>
       </div>
-
-      <Cart />
 
       {/* Mobile Drawer menu */}
       <AnimatePresence>
@@ -114,7 +148,7 @@ export function Header() {
               <div className="p-4 border-b border-gray-100 bg-gray-50 flex items-center relative"><Search className="w-4 h-4 text-[#5C7A3E] absolute left-7 top-1/2 -translate-y-1/2" /><input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={t.search} className="w-full bg-white border border-gray-250/60 rounded-full py-1.5 pl-9 pr-4 text-xs focus:ring-2 focus:ring-[#E8B84B] focus:outline-none" /></div>
               <div className="flex-grow overflow-y-auto p-4 space-y-4 text-xs font-semibold text-gray-700">
                 {t.categories.map((c, i) => (
-                  <Link key={c} href={cats[i] === "all" ? "/" : `/categories/${cats[i]}`} onClick={() => setIsMobileOpen(false)} className="block py-2.5 px-2 hover:bg-brand-green/10 rounded-lg">{c}</Link>
+                  <Link key={c} href={catPaths[i]} onClick={() => setIsMobileOpen(false)} className="block py-2.5 px-2 hover:bg-brand-green/10 rounded-lg">{c}</Link>
                 ))}
               </div>
               <div className="p-4 border-t border-gray-100 bg-gray-50 flex flex-col space-y-3">
@@ -126,6 +160,14 @@ export function Header() {
         )}
       </AnimatePresence>
     </header>
+  );
+}
+
+export function Header() {
+  return (
+    <Suspense fallback={<header className="w-full bg-white h-20 border-b border-gray-150/40" />}>
+      <HeaderContent />
+    </Suspense>
   );
 }
 

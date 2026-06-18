@@ -14,13 +14,13 @@ export function Footer() {
       ? "مكونات غذائية عالية الجودة يتم توريدها وتوصيلها في جميع أنحاء الخليج العربي. موضع ثقة الشركات والعائلات."
       : "Premium quality food ingredients sourced and delivered across the GCC. Trusted by businesses and households.",
     explore: isAr ? "استكشف" : "Explore",
-    support: isAr ? "الدعم" : "Customer Support",
+    support: isAr ? "معلومات" : "Information",
     contact: isAr ? "تواصل معنا" : "Contact",
     whatsappCTA: isAr ? "تواصل عبر الواتساب" : "Chat on WhatsApp",
     copyright: isAr ? "© ٢٠٢٥ شركة ديار العربية الوطنية ش ش و. جميع الحقوق محفوظة." : "© 2025 Al Diyar Al Arabia National SPC. All rights reserved.",
     links: isAr
-      ? { home: "الرئيسية", about: "من نحن", products: "منتجاتنا", bulk: "طلبات الجملة", quality: "الجودة", contact: "اتصل بنا", track: "تتبع الطلب", faqs: "الأسئلة الشائعة", shipping: "الشحن", returns: "الإرجاع", privacy: "سياسة الخصوصية", terms: "الشروط" }
-      : { home: "Home", about: "About Us", products: "Our Products", bulk: "Bulk Orders", quality: "Quality Standards", contact: "Contact Us", track: "Track My Order", faqs: "FAQs", shipping: "Shipping Info", returns: "Returns Policy", privacy: "Privacy Policy", terms: "Terms of Use" }
+      ? { home: "الرئيسية", about: "من نحن", contact: "اتصل بنا", whyUs: "لماذا نحن", founder: "رسالة المؤسس" }
+      : { home: "Home", about: "About Us", contact: "Contact Us", whyUs: "Why Choose Us", founder: "Founder's Message" }
   };
 
   const socials = [
@@ -44,11 +44,40 @@ export function Footer() {
           {/* Col 1 */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center bg-white border-2 border-[#E8B84B] p-1"><Image src="/assets/logo-1.png" alt={BRAND.nameEn} width={64} height={64} className="w-full h-full object-contain" /></div>
-              <div className="flex flex-col text-left rtl:text-right">
-                <span className="font-arabic text-[12px] text-[#E8B84B] leading-none mb-0.5">{BRAND.nameAr}</span>
-                <span className="font-sans font-bold text-[14px] leading-none">{BRAND.nameEn}</span>
-                <span className="font-sans text-[10px] text-white/50 uppercase mt-0.5 tracking-wider">{BRAND.tagline}</span>
+              {/* Footer logo circle */}
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '2px solid #E8B84B',
+                backgroundColor: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}>
+                <img src="/logo-1.png" alt="Diyar Arabia" style={{ width: '90%', height: '90%', objectFit: 'contain' }} />
+              </div>
+
+              {/* Brand name lockup — DO NOT MODIFY FONT SIZES */}
+              <div className="flex flex-col leading-tight">
+                <span
+                  className="font-arabic text-right"
+                  style={{ fontFamily: "'Cairo', sans-serif", fontSize: '13px', color: '#4A4A4A', direction: 'rtl' }}
+                >
+                  الديار العربية الوطنية ش ش و
+                </span>
+                <span
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: '20px', fontWeight: '800', color: '#1A1A1A', letterSpacing: '-0.01em', textTransform: 'uppercase' }}
+                >
+                  DIYAR ARABIA NATIONAL SPC
+                </span>
+                <span
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: '400', color: '#7A7A7A', letterSpacing: '0.08em', textTransform: 'uppercase' }}
+                >
+                  YOUR FOOD SUPPLY PARTNER
+                </span>
               </div>
             </Link>
             <p className="text-white/70 text-xs leading-relaxed text-justify">{t.desc}</p>
@@ -63,9 +92,6 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-white/55">
               <li><Link href="/" className="hover:text-[#E8B84B] transition-colors">{t.links.home}</Link></li>
               <li><Link href="/about" className="hover:text-[#E8B84B] transition-colors">{t.links.about}</Link></li>
-              <li><Link href="/products" className="hover:text-[#E8B84B] transition-colors">{t.links.products}</Link></li>
-              <li><Link href="/bulk-orders" className="hover:text-[#E8B84B] transition-colors">{t.links.bulk}</Link></li>
-              <li><Link href="/quality" className="hover:text-[#E8B84B] transition-colors">{t.links.quality}</Link></li>
               <li><Link href="/contact" className="hover:text-[#E8B84B] transition-colors">{t.links.contact}</Link></li>
             </ul>
           </div>
@@ -74,10 +100,8 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#E8B84B] border-b border-white/10 pb-2 mb-4">{t.support}</h4>
             <ul className="space-y-2.5 text-xs text-white/55">
-              <li><Link href="/track-order" className="hover:text-[#E8B84B] transition-colors">{t.links.track}</Link></li>
-              <li><Link href="/faqs" className="hover:text-[#E8B84B] transition-colors">{t.links.faqs}</Link></li>
-              <li><Link href="/shipping" className="hover:text-[#E8B84B] transition-colors">{t.links.shipping}</Link></li>
-              <li><Link href="/returns" className="hover:text-[#E8B84B] transition-colors">{t.links.returns}</Link></li>
+              <li><Link href="/why-us" className="hover:text-[#E8B84B] transition-colors">{t.links.whyUs}</Link></li>
+              <li><Link href="/founder" className="hover:text-[#E8B84B] transition-colors">{t.links.founder}</Link></li>
             </ul>
             <a href={BRAND.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-[#25D366] hover:bg-[#E8B84B] hover:text-[#1C2B12] text-white font-bold text-xs px-4 py-2.5 rounded-full shadow-md transition-colors"><span>💬 {t.whatsappCTA}</span></a>
           </div>
@@ -97,16 +121,6 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-white/50 space-y-4 md:space-y-0">
           <span>{t.copyright}</span>
-          <div className="flex items-center space-x-2 bg-black/15 px-3 py-1.5 rounded-lg border border-white/5">
-            <span className="font-bold uppercase tracking-wider text-[8px] text-[#E8B84B]">Payment</span>
-            <div className="flex items-center space-x-1.5">
-              {["VISA", "MC", "Pay"].map(p => <span key={p} className="bg-white px-1.5 py-0.5 rounded text-[8px] font-bold text-black select-none">{p}</span>)}
-            </div>
-          </div>
-          <div className="flex space-x-4 rtl:space-x-reverse font-medium">
-            <Link href="/privacy" className="hover:text-[#E8B84B] transition-colors">{t.links.privacy}</Link>
-            <Link href="/terms" className="hover:text-[#E8B84B] transition-colors">{t.links.terms}</Link>
-          </div>
         </div>
       </div>
     </footer>

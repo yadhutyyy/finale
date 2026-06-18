@@ -1,26 +1,22 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, ShoppingCart } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useSiteContext, BRAND } from "@/context/SiteContext";
-import { useCart } from "@/hooks/useCart";
-import { useWishlist } from "@/hooks/useWishlist";
-import { convertPrice, getCurrencySymbol } from "@/utils";
 
 const products = [
-  { id: "grains", name: "Premium Grains", nameAr: "حبوب ممتازة", description: "We supply high-grade rice, wheat, and other essential grains, meticulously sourced to meet demanding culinary standards across the region.", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", price: 0.45, category: "Grains & Rice" },
-  { id: "pulses", name: "Quality Pulses", nameAr: "بقوليات عالية الجودة", description: "A comprehensive range of lentils, chickpeas, and beans imported directly from esteemed global farming hubs ensures nutritional excellence.", image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", price: 0.65, category: "Pulses" },
-  { id: "spices", name: "Aromatic Spices", nameAr: "بهارات عطرية", description: "Authentic, rich, and vibrant spices that form the cornerstone of Omani heritage and contemporary cuisine, carefully processed and packaged.", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", price: 1.20, category: "Spices & Herbs" }
+  { id: "grains", name: "Premium Grains", nameAr: "حبوب ممتازة", description: "We supply high-grade rice, wheat, and other essential grains, meticulously sourced to meet demanding culinary standards across the region.", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", category: "Grains & Rice" },
+  { id: "pulses", name: "Quality Pulses", nameAr: "بقوليات عالية الجودة", description: "A comprehensive range of lentils, chickpeas, and beans imported directly from esteemed global farming hubs ensures nutritional excellence.", image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", category: "Pulses" },
+  { id: "spices", name: "Aromatic Spices", nameAr: "بهارات عطرية", description: "Authentic, rich, and vibrant spices that form the cornerstone of Omani heritage and contemporary cuisine, carefully processed and packaged.", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", category: "Spices & Herbs" }
 ];
 
-export default function Home() {
-  const { lang, currency, searchQuery } = useSiteContext();
-  const { addToCart } = useCart();
-  const { toggleWishlist, isInWishlist } = useWishlist();
+function HomeContent() {
+  const { lang, searchQuery } = useSiteContext();
+  const searchParams = useSearchParams();
+  const currentCat = searchParams.get("category");
 
   const isAr = lang === "ar";
-  const sym = getCurrencySymbol(currency, lang);
 
   const t = {
     tagline: isAr ? "التميز في التجارة منذ عام ١٩٩٨" : "Excellence in Trading Since 1998",
@@ -33,16 +29,27 @@ export default function Home() {
     quoteBtn: isAr ? "اطلب عرض سعر" : "Request a Quote",
     commoditiesTitle: isAr ? "سلعنا الأساسية" : "Our Primary Commodities",
     commoditiesDesc: isAr ? "استيراد أفضل المنتجات الزراعية لضمان أعلى المعايير لسوق الخليج العربي." : "Sourcing the finest agricultural products to ensure the highest standards for the GCC market.",
-    learnMore: isAr ? "تعرف على المزيد" : "Learn more",
-    addToCart: isAr ? "أضف إلى السلة" : "Add to Cart",
-    noProducts: isAr ? "لا توجد منتجات تطابق بحثك." : "No products match your search query."
+    noProducts: isAr ? "لا توجد منتجات تطابق بحثك أو هذه الفئة." : "No products match your search query or selected category."
   };
 
-  const filtered = products.filter(p =>
-    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.nameAr.includes(searchQuery)
-  );
+  const categoryMap: { [key: string]: string } = {
+    "grains-rice": "Grains & Rice",
+    "pulses": "Pulses",
+    "spices-herbs": "Spices & Herbs",
+    "nuts-dried-fruits": "Nuts & Dried Fruits",
+    "oils-ghee": "Oils & Ghee",
+    "organic-range": "Organic Range"
+  };
+
+  const selectedCategory = currentCat ? categoryMap[currentCat] : null;
+
+  const filtered = products.filter(p => {
+    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.nameAr.includes(searchQuery);
+    const matchesCategory = selectedCategory ? p.category === selectedCategory : true;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="bg-white">
@@ -78,23 +85,36 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {filtered.map((p) => {
-                const isWish = isInWishlist(p.id);
                 return (
                   <div key={p.id} className="bg-white rounded-2xl border border-gray-250/20 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                     <div className="h-56 relative bg-primary-100">
                       <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-                      <button onClick={() => toggleWishlist(p)} className={`absolute top-4 right-4 w-9 h-9 rounded-full bg-white/95 shadow-md flex items-center justify-center cursor-pointer transition-transform ${isWish ? "text-red-500" : "text-gray-400"}`}><Heart className={`w-5 h-5 ${isWish ? "fill-current" : ""}`} /></button>
                     </div>
-                    <div className="p-6 flex-grow">
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-base font-serif font-bold text-brand-dark">{isAr ? p.nameAr : p.name}</h3>
-                        <span className="text-sm font-bold text-[#5C7A3E]">{convertPrice(p.price, currency)} {sym}</span>
+                    <div className="p-6 flex-grow flex flex-col">
+                      <div className="flex flex-col mb-4">
+                        <span className="self-start inline-block bg-[#5C7A3E]/10 text-[#5C7A3E] text-[10px] font-bold px-2.5 py-1 rounded-full mb-3 uppercase tracking-wider">
+                          {isAr ? (p.category === "Grains & Rice" ? "الأرز والحبوب" : p.category === "Pulses" ? "البقوليات" : "التوابل والأعشاب") : p.category}
+                        </span>
+                        <h3 className="text-lg font-serif font-bold text-brand-dark mb-2">
+                          {isAr ? p.nameAr : p.name}
+                        </h3>
+                        <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">
+                          {p.description}
+                        </p>
                       </div>
-                      <p className="text-gray-500 text-xs leading-relaxed line-clamp-3">{p.description}</p>
-                    </div>
-                    <div className="p-6 pt-0 border-t border-gray-100 flex items-center justify-between gap-3">
-                      <Link href="/about" className="text-brand-green font-semibold text-xs hover:underline">{t.learnMore} &rarr;</Link>
-                      <button onClick={() => addToCart(p)} className="inline-flex items-center space-x-1.5 bg-brand-green hover:bg-[#3D5229] text-white font-bold text-[10px] uppercase tracking-wider px-3.5 py-2.5 rounded-lg shadow-sm cursor-pointer transition-colors"><ShoppingCart className="w-3.5 h-3.5" /><span>{t.addToCart}</span></button>
+                      <div className="mt-auto pt-4 border-t border-gray-100">
+                        <a
+                          href="https://wa.me/96896912000"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-2.5 rounded-xl text-xs font-bold hover:bg-[#1ebe57] transition-all duration-150 shadow-sm"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+                          </svg>
+                          {isAr ? "استفسار عبر واتساب" : "Enquire on WhatsApp"}
+                        </a>
+                      </div>
                     </div>
                   </div>
                 );
@@ -125,5 +145,13 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#5C7A3E]"></div></div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
