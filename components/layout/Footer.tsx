@@ -17,7 +17,7 @@ export function Footer() {
     support: isAr ? "معلومات" : "Information",
     contact: isAr ? "تواصل معنا" : "Contact",
     whatsappCTA: isAr ? "تواصل عبر الواتساب" : "Chat on WhatsApp",
-    copyright: isAr ? "© ٢٠٢٥ شركة ديار العربية الوطنية ش ش و. جميع الحقوق محفوظة." : "© 2025 Al Diyar Al Arabia National SPC. All rights reserved.",
+    copyright: isAr ? "© ٢٠٢٥ شركة الديار العربية الوطنية ش ش و. جميع الحقوق محفوظة." : "© 2025 AL DIYAR AL ARABIA NATIONAL SPC. All rights reserved.",
     links: isAr
       ? { home: "الرئيسية", about: "من نحن", contact: "اتصل بنا", whyUs: "لماذا نحن", founder: "رسالة المؤسس" }
       : { home: "Home", about: "About Us", contact: "Contact Us", whyUs: "Why Choose Us", founder: "Founder's Message" }
@@ -43,42 +43,106 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1 */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              {/* Footer logo circle */}
-              <div style={{
-                width: '64px',
-                height: '64px',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                border: '2px solid #E8B84B',
-                backgroundColor: '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0
-              }}>
-                <img src="/logo-1.png" alt="Diyar Arabia" style={{ width: '90%', height: '90%', objectFit: 'contain' }} />
-              </div>
-
-              {/* Brand name lockup — DO NOT MODIFY FONT SIZES */}
-              <div className="flex flex-col leading-tight">
-                <span
-                  className="font-arabic text-right"
-                  style={{ fontFamily: "'Cairo', sans-serif", fontSize: '13px', color: '#4A4A4A', direction: 'rtl' }}
-                >
-                  الديار العربية الوطنية ش ش و
-                </span>
-                <span
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: '20px', fontWeight: '800', color: '#1A1A1A', letterSpacing: '-0.01em', textTransform: 'uppercase' }}
-                >
-                  DIYAR ARABIA NATIONAL SPC
-                </span>
-                <span
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: '400', color: '#7A7A7A', letterSpacing: '0.08em', textTransform: 'uppercase' }}
-                >
-                  YOUR FOOD SUPPLY PARTNER
-                </span>
-              </div>
+            <Link href="/">
+              {isAr ? (
+                /* RTL Mode layout */
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexDirection: 'row-reverse' }}>
+                  {/* Circle logo */}
+                  <div style={{
+                    width: '64px', height: '64px', borderRadius: '50%',
+                    border: '2px solid #E8B84B', overflow: 'hidden',
+                    backgroundColor: '#fff', flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                  }}>
+                    <img src="/logo-1.png" alt="Al Diyar Al Arabia" style={{ width: '88%', height: '88%', objectFit: 'contain' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'right' }}>
+                    {/* Arabic FIRST and LARGER in RTL mode */}
+                    <div style={{
+                      fontFamily: "'Cairo', sans-serif",
+                      fontSize: '17px',
+                      fontWeight: '800',
+                      color: '#FFFFFF',
+                      direction: 'rtl',
+                      letterSpacing: '0.02em'
+                    }}>
+                      الديار العربية الوطنية ش ش و
+                    </div>
+                    {/* English smaller in RTL mode */}
+                    <div style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '12px',
+                      fontWeight: '500',
+                      color: '#E8B84B',
+                      letterSpacing: '0.03em',
+                      textTransform: 'uppercase'
+                    }}>
+                      AL DIYAR AL ARABIA NATIONAL SPC
+                    </div>
+                    <div style={{
+                      fontFamily: "'Cairo', sans-serif",
+                      fontSize: '10px',
+                      color: '#A0A0A0',
+                      direction: 'rtl',
+                      letterSpacing: '0.05em'
+                    }}>
+                      شريكك في توريد الغذاء
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* LTR Mode layout */
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  {/* Circle logo */}
+                  <div style={{
+                    width: '64px', height: '64px', borderRadius: '50%',
+                    border: '2px solid #E8B84B', overflow: 'hidden',
+                    backgroundColor: '#fff', flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                  }}>
+                    <img src="/logo-1.png" alt="Al Diyar Al Arabia" style={{ width: '88%', height: '88%', objectFit: 'contain' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+                    {/* Arabic — RIGHT aligned, proper RTL */}
+                    <div style={{
+                      fontFamily: "'Cairo', sans-serif",
+                      fontSize: '13px',
+                      fontWeight: '600',
+                      color: '#E8B84B',
+                      direction: 'rtl',
+                      textAlign: 'right',
+                      letterSpacing: '0.02em',
+                      lineHeight: '1.4'
+                    }}>
+                      الديار العربية الوطنية ش ش و
+                    </div>
+                    {/* English — LEFT aligned, bold, ALL CAPS */}
+                    <div style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '17px',
+                      fontWeight: '800',
+                      color: '#FFFFFF',
+                      letterSpacing: '0.04em',
+                      lineHeight: '1.2',
+                      textTransform: 'uppercase'
+                    }}>
+                      AL DIYAR AL ARABIA NATIONAL SPC
+                    </div>
+                    {/* Tagline */}
+                    <div style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '10px',
+                      fontWeight: '400',
+                      color: '#A0A0A0',
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      lineHeight: '1.4'
+                    }}>
+                      Your Food Supply Partner
+                    </div>
+                  </div>
+                </div>
+              )}
             </Link>
             <p className="text-white/70 text-xs leading-relaxed text-justify">{t.desc}</p>
             <div className="flex space-x-3 rtl:space-x-reverse">

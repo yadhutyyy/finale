@@ -1,15 +1,69 @@
 "use client";
 import React, { Suspense } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useSiteContext, BRAND } from "@/context/SiteContext";
 
 const products = [
-  { id: "grains", name: "Premium Grains", nameAr: "حبوب ممتازة", description: "We supply high-grade rice, wheat, and other essential grains, meticulously sourced to meet demanding culinary standards across the region.", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", category: "Grains & Rice" },
-  { id: "pulses", name: "Quality Pulses", nameAr: "بقوليات عالية الجودة", description: "A comprehensive range of lentils, chickpeas, and beans imported directly from esteemed global farming hubs ensures nutritional excellence.", image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", category: "Pulses" },
-  { id: "spices", name: "Aromatic Spices", nameAr: "بهارات عطرية", description: "Authentic, rich, and vibrant spices that form the cornerstone of Omani heritage and contemporary cuisine, carefully processed and packaged.", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", category: "Spices & Herbs" }
+  {
+    id: "grains",
+    name: "Premium Basmati Rice",
+    nameAr: "أرز بسمتي ممتاز",
+    description: "Meticulously sourced, long-grain basmati rice offering exceptional aroma, fluffy texture, and premium quality for catering and retail.",
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=85",
+    category: "Grains & Rice"
+  },
+  {
+    id: "pulses",
+    name: "Premium Quality Pulses",
+    nameAr: "بقوليات عالية الجودة",
+    description: "A comprehensive selection of lentils, chickpeas, and beans sourced directly from global agricultural leaders for maximum nutritional value.",
+    image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?w=800&q=85",
+    category: "Pulses"
+  },
+  {
+    id: "spices",
+    name: "Aromatic Spices & Herbs",
+    nameAr: "بهارات وأعشاب عطرية",
+    description: "Rich, vibrant, and pure whole and ground spices carefully processed to retain their authentic Omani heritage flavor profile.",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=85",
+    category: "Spices & Herbs"
+  },
+  {
+    id: "nuts",
+    name: "Premium Nuts & Dried Fruits",
+    nameAr: "مكسرات وفواكه مجففة فاخرة",
+    description: "An exceptional grade assortment of almonds, cashews, walnuts, and raisins, perfectly preserved to guarantee freshness and crunch.",
+    image: "https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?w=800&q=85",
+    category: "Nuts & Dried Fruits"
+  },
+  {
+    id: "oils",
+    name: "Pure Oils & Ghee",
+    nameAr: "زيوت وسمن نقي",
+    description: "High-grade vegetable oils and traditional golden cow ghee, processed under strict quality controls for perfect culinary applications.",
+    image: "https://images.unsplash.com/photo-1547514701-42782101795e?w=800&q=85",
+    category: "Oils & Ghee"
+  },
+  {
+    id: "organic",
+    name: "Premium Organic Range",
+    nameAr: "تشكيلة المنتجات العضوية",
+    description: "100% certified organic grains, seeds, and superfoods cultivated naturally without pesticides to promote health and wellness.",
+    image: "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?w=800&q=85",
+    category: "Organic Range"
+  }
 ];
+
+const categoryTranslations: Record<string, string> = {
+  "Grains & Rice": "الأرز والحبوب",
+  "Pulses": "البقوليات",
+  "Spices & Herbs": "التوابل والأعشاب",
+  "Nuts & Dried Fruits": "المكسرات والفواكه المجففة",
+  "Oils & Ghee": "الزيوت والسمن",
+  "Organic Range": "المجموعة العضوية",
+  "Bulk Enquiry": "طلب بالجملة"
+};
 
 function HomeContent() {
   const { lang, searchQuery } = useSiteContext();
@@ -52,11 +106,11 @@ function HomeContent() {
   });
 
   return (
-    <div className="bg-white">
+    <div className="bg-white font-sans">
       {/* Hero Section */}
       <section className="relative bg-primary-950 text-white overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0">
-          <Image src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero Background" fill priority className="object-cover opacity-40 mix-blend-lighten" />
+          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1600&q=80" alt="Hero Background" className="w-full h-full object-cover opacity-40 mix-blend-lighten" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary-950 via-primary-900/80 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -87,13 +141,24 @@ function HomeContent() {
               {filtered.map((p) => {
                 return (
                   <div key={p.id} className="bg-white rounded-2xl border border-gray-250/20 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
-                    <div className="h-56 relative bg-primary-100">
-                      <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
+                    <div className="bg-primary-100">
+                      <img
+                        src={p.image}
+                        alt={p.name}
+                        style={{
+                          width: '100%',
+                          height: '200px',
+                          objectFit: 'cover',        // ← fills the frame, never stretches
+                          objectPosition: 'center',  // ← centers the subject
+                          borderRadius: '8px 8px 0 0'
+                        }}
+                        loading="lazy"
+                      />
                     </div>
                     <div className="p-6 flex-grow flex flex-col">
                       <div className="flex flex-col mb-4">
                         <span className="self-start inline-block bg-[#5C7A3E]/10 text-[#5C7A3E] text-[10px] font-bold px-2.5 py-1 rounded-full mb-3 uppercase tracking-wider">
-                          {isAr ? (p.category === "Grains & Rice" ? "الأرز والحبوب" : p.category === "Pulses" ? "البقوليات" : "التوابل والأعشاب") : p.category}
+                          {isAr ? (categoryTranslations[p.category] || p.category) : p.category}
                         </span>
                         <h3 className="text-lg font-serif font-bold text-brand-dark mb-2">
                           {isAr ? p.nameAr : p.name}

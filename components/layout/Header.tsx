@@ -73,28 +73,106 @@ function HeaderContent() {
       {/* Zone 2 — Main Header */}
       <div className={`border-b border-gray-150/40 shadow-sm flex items-center w-full transition-all duration-200 ${isScrolled ? "h-14" : "h-20"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center gap-4">
-          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Logo size={isScrolled ? "mobile" : "header"} />
-            
-            {/* Brand name lockup — DO NOT MODIFY FONT SIZES */}
-            <div className="flex flex-col leading-tight">
-              <span
-                className="font-arabic text-right"
-                style={{ fontFamily: "'Cairo', sans-serif", fontSize: '13px', color: '#4A4A4A', direction: 'rtl' }}
-              >
-                الديار العربية الوطنية ش ش و
-              </span>
-              <span
-                style={{ fontFamily: "'Inter', sans-serif", fontSize: '20px', fontWeight: '800', color: '#1A1A1A', letterSpacing: '-0.01em', textTransform: 'uppercase' }}
-              >
-                DIYAR ARABIA NATIONAL SPC
-              </span>
-              <span
-                style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: '400', color: '#7A7A7A', letterSpacing: '0.08em', textTransform: 'uppercase' }}
-              >
-                YOUR FOOD SUPPLY PARTNER
-              </span>
-            </div>
+          <Link href="/">
+            {isAr ? (
+              /* RTL Mode layout */
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexDirection: 'row-reverse' }}>
+                {/* Circle logo */}
+                <div style={{
+                  width: '56px', height: '56px', borderRadius: '50%',
+                  border: '2px solid #E8B84B', overflow: 'hidden',
+                  backgroundColor: '#fff', flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  <img src="/logo-1.png" alt="Al Diyar Al Arabia" style={{ width: '88%', height: '88%', objectFit: 'contain' }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'right' }}>
+                  {/* Arabic FIRST and LARGER in RTL mode */}
+                  <div style={{
+                    fontFamily: "'Cairo', sans-serif",
+                    fontSize: '17px',
+                    fontWeight: '800',
+                    color: '#1A1A1A',
+                    direction: 'rtl',
+                    letterSpacing: '0.02em'
+                  }}>
+                    الديار العربية الوطنية ش ش و
+                  </div>
+                  {/* English smaller in RTL mode */}
+                  <div style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '12px',
+                    fontWeight: '500',
+                    color: '#4A4A4A',
+                    letterSpacing: '0.03em',
+                    textTransform: 'uppercase'
+                  }}>
+                    AL DIYAR AL ARABIA NATIONAL SPC
+                  </div>
+                  <div style={{
+                    fontFamily: "'Cairo', sans-serif",
+                    fontSize: '10px',
+                    color: '#7A7A7A',
+                    direction: 'rtl',
+                    letterSpacing: '0.05em'
+                  }}>
+                    شريكك في توريد الغذاء
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* LTR Mode layout */
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                {/* Circle logo */}
+                <div style={{
+                  width: '56px', height: '56px', borderRadius: '50%',
+                  border: '2px solid #E8B84B', overflow: 'hidden',
+                  backgroundColor: '#fff', flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  <img src="/logo-1.png" alt="Al Diyar Al Arabia" style={{ width: '88%', height: '88%', objectFit: 'contain' }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+                  {/* Arabic — RIGHT aligned, proper RTL */}
+                  <div style={{
+                    fontFamily: "'Cairo', sans-serif",
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    color: '#3D5229',
+                    direction: 'rtl',
+                    textAlign: 'right',
+                    letterSpacing: '0.02em',
+                    lineHeight: '1.4'
+                  }}>
+                    الديار العربية الوطنية ش ش و
+                  </div>
+                  {/* English — LEFT aligned, bold, ALL CAPS */}
+                  <div style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '17px',
+                    fontWeight: '800',
+                    color: '#1A1A1A',
+                    letterSpacing: '0.04em',
+                    lineHeight: '1.2',
+                    textTransform: 'uppercase'
+                  }}>
+                    AL DIYAR AL ARABIA NATIONAL SPC
+                  </div>
+                  {/* Tagline */}
+                  <div style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '10px',
+                    fontWeight: '400',
+                    color: '#7A7A7A',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    lineHeight: '1.4'
+                  }}>
+                    Your Food Supply Partner
+                  </div>
+                </div>
+              </div>
+            )}
           </Link>
 
           <div className="hidden md:flex flex-grow max-w-md relative">
@@ -142,7 +220,39 @@ function HeaderContent() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} exit={{ opacity: 0 }} onClick={() => setIsMobileOpen(false)} className="fixed inset-0 bg-black z-50 cursor-pointer md:hidden" />
             <motion.div initial={{ x: isAr ? "100%" : "-100%" }} animate={{ x: 0 }} exit={{ x: isAr ? "100%" : "-100%" }} transition={{ type: "tween" as const, duration: 0.3 }} className="fixed top-0 bottom-0 left-0 rtl:left-auto rtl:right-0 w-[80vw] max-w-sm bg-white z-50 shadow-2xl flex flex-col md:hidden border-r rtl:border-l border-gray-200">
               <div className="p-4 border-b border-gray-150 flex justify-between items-center">
-                <Link href="/" onClick={() => setIsMobileOpen(false)} className="flex items-center space-x-2.5 rtl:space-x-reverse"><Logo size="mobile" /><div className="flex flex-col text-left rtl:text-right"><span className="font-arabic font-bold text-xs text-brand-green leading-none mb-0.5">{BRAND.nameAr}</span><span className="font-sans font-bold text-[10px] text-brand-dark leading-none">{BRAND.nameEn}</span></div></Link>
+                <Link href="/" onClick={() => setIsMobileOpen(false)}>
+                  {isAr ? (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexDirection: 'row-reverse' }}>
+                      <div style={{
+                        width: '40px', height: '40px', borderRadius: '50%',
+                        border: '2px solid #E8B84B', overflow: 'hidden',
+                        backgroundColor: '#fff', flexShrink: 0,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      }}>
+                        <img src="/logo-1.png" alt="Al Diyar Al Arabia" style={{ width: '88%', height: '88%', objectFit: 'contain' }} />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', textAlign: 'right' }}>
+                        <div style={{ fontFamily: "'Cairo', sans-serif", fontSize: '12px', fontWeight: '800', color: '#1A1A1A', direction: 'rtl' }}>الديار العربية الوطنية ش ش و</div>
+                        <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '9px', fontWeight: '500', color: '#4A4A4A', textTransform: 'uppercase' }}>AL DIYAR AL ARABIA NATIONAL SPC</div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div style={{
+                        width: '40px', height: '40px', borderRadius: '50%',
+                        border: '2px solid #E8B84B', overflow: 'hidden',
+                        backgroundColor: '#fff', flexShrink: 0,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      }}>
+                        <img src="/logo-1.png" alt="Al Diyar Al Arabia" style={{ width: '88%', height: '88%', objectFit: 'contain' }} />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+                        <div style={{ fontFamily: "'Cairo', sans-serif", fontSize: '10px', fontWeight: '600', color: '#3D5229', direction: 'rtl', textAlign: 'right' }}>الديار العربية الوطنية ش ش و</div>
+                        <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: '800', color: '#1A1A1A', textTransform: 'uppercase' }}>AL DIYAR AL ARABIA NATIONAL SPC</div>
+                      </div>
+                    </div>
+                  )}
+                </Link>
                 <button onClick={() => setIsMobileOpen(false)} className="text-gray-400 hover:text-brand-green cursor-pointer"><X className="w-5 h-5" /></button>
               </div>
               <div className="p-4 border-b border-gray-100 bg-gray-50 flex items-center relative"><Search className="w-4 h-4 text-[#5C7A3E] absolute left-7 top-1/2 -translate-y-1/2" /><input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={t.search} className="w-full bg-white border border-gray-250/60 rounded-full py-1.5 pl-9 pr-4 text-xs focus:ring-2 focus:ring-[#E8B84B] focus:outline-none" /></div>

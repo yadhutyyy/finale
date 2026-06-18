@@ -21,7 +21,7 @@ export interface WishlistItem {
 }
 
 export const BRAND = {
-  nameEn: "Al Diyar Al Arabia National SPC",
+  nameEn: "AL DIYAR AL ARABIA NATIONAL SPC",
   nameAr: "الديار العربية الوطنية ش ش و",
   tagline: "Your Food Supply Partner",
   whatsapp: "https://wa.me/96896912000",
